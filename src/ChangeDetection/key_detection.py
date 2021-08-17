@@ -2,9 +2,9 @@ from typing import List
 from .detection import Detection
 
 
-class LineSearchDetection(Detection):
+class KeyDetection(Detection):
 
-    def __detect__(self, old: List[str], new: List[str]) -> List[str]:
+    def __detect__(self, old: str, new: str) -> List[str]:
 
         old_lines_set = set(old)
 

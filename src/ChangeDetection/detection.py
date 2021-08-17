@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
-from colorama import Fore
-import click
 
 
 class Detection(ABC):
@@ -14,19 +12,12 @@ class Detection(ABC):
             self.detect(old, new)
 
     def detect(self, old: str, new: str) -> List[str]:
-        import re
-        tokens = "\n| |\'"
 
-        # old_lines = re.split(tokens, old)
-        # new_lines = re.split(tokens, new)
-        old_lines = list(old)
-        new_lines = list(new)
-
-        self.changes = self.__detect__(old_lines, new_lines)
+        self.changes = self.__detect__(old, new)
         return self.changes
 
     @abstractmethod
-    def __detect__(self, old: List[str], new: List[str]) -> List[str]:
+    def __detect__(self, old: str, news: str) -> List[str]:
         pass
 
     def print(self, mode: Optional[str] = "color"):
